@@ -1,7 +1,6 @@
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import {
   AppBar,
-  Avatar,
   Box,
   Divider,
   IconButton,
@@ -40,7 +39,7 @@ const Topbar = ({}: any): JSX.Element => {
           <Stack spacing={1} alignItems={'center'} direction="row">
             <Typography variant="subtitle2">11pixels</Typography>
             <Tooltip title="Logout">
-              <IconButton>
+              <IconButton onClick={() => router?.push('/login')}>
                 <PowerSettingsNewIcon color="primary" />
               </IconButton>
             </Tooltip>

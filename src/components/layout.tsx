@@ -13,7 +13,7 @@ const Layout: React.FC<ILayoutProps> = (props): JSX.Element => {
   const { children } = props;
 
   const router = useRouter();
-  let routeName = router?.pathname?.split?.('/').at?.(-1) || 'Home';
+  let routeName = router?.pathname?.split?.('/').at?.(1);
 
   return (
     <>
@@ -26,9 +26,13 @@ const Layout: React.FC<ILayoutProps> = (props): JSX.Element => {
       <Topbar />
       <Sidebar />
 
-      <WithAnimation type={'fade'}>
-        <Box sx={{ ml: 32, p: 5 }}>{children}</Box>
-      </WithAnimation>
+      {router?.asPath === '/login' ? (
+        children
+      ) : (
+        <WithAnimation type={'fade'}>
+          <Box sx={{ ml: 32, p: 5 }}>{children}</Box>
+        </WithAnimation>
+      )}
     </>
   );
 };
