@@ -13,7 +13,7 @@ const Layout: React.FC<ILayoutProps> = (props): JSX.Element => {
   const { children } = props;
 
   const router = useRouter();
-  let routeName = router?.pathname?.split?.('/').at?.(1);
+  let routeName = router?.pathname?.split?.('/')[1] || 'Home';
 
   return (
     <>
