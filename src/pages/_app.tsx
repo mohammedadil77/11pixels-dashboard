@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={_11PixelsAppTheme}>
       <RouteGuard>
         <Layout>
-          <CssBaseline />
+          {/* <CssBaseline /> */}
           <Component {...pageProps} />
         </Layout>
       </RouteGuard>
