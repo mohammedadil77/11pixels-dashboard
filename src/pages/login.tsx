@@ -1,3 +1,4 @@
+import LockIcon from '@mui/icons-material/Lock';
 import {
   Avatar,
   Box,
@@ -9,17 +10,18 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import Link from 'next/link';
-import React from 'react';
-
-let loginStyles = {
-  width: '540px',
-  height: '600px',
-  background: '#FCFCFC',
-  borderRadius: '10px',
-};
+import { useRouter } from 'next/router';
+import {
+  loginAvatorBoxStyle,
+  loginBtnStyle,
+  loginForgetPasswordStyle,
+  loginStyles,
+  loginSubContainerStyle,
+  loginTextStyle,
+} from '../styles/login.style';
 
 const Login = () => {
+  let router = useRouter();
   return (
     <Stack
       flexDirection={'column'}
@@ -28,13 +30,7 @@ const Login = () => {
       height={'100vh'}
     >
       <Box sx={loginStyles}>
-        <Box
-          sx={{
-            height: '150px',
-            background: '#2E1F1F',
-            borderRadius: '10px 10px 0px 0px',
-          }}
-        >
+        <Box sx={loginSubContainerStyle}>
           <Box padding={2} sx={{ textAlign: 'center' }}>
             <Typography
               variant="h5"
@@ -44,30 +40,12 @@ const Login = () => {
             >
               Welcome !
             </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 400,
-                fontSize: '18px',
-                lineHeight: '27px',
-                textAlign: 'center',
-                color: '#FCFCFC',
-              }}
-            >
+            <Typography variant="h6" sx={loginTextStyle}>
               Sign in to continue to 11pixels
             </Typography>
           </Box>
         </Box>
-        <Box
-          sx={{
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1,
-            top: -45,
-          }}
-        >
+        <Box sx={loginAvatorBoxStyle}>
           <Avatar
             alt="11pixels user"
             src={'/logo.png'}
@@ -94,22 +72,23 @@ const Login = () => {
 
             <Button
               variant={'contained'}
-              sx={{
-                width: '138px',
-                height: '44px',
-                borderRadius: '6px',
-                textTransform: 'capitalize',
-              }}
+              sx={loginBtnStyle}
+              onClick={() => router.push('/home')}
             >
               Log In
             </Button>
           </Stack>
 
-          <Link href={''}>
-            <Typography sx={{ textAlign: 'left', mt: 6 }}>
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            sx={{ color: '#626ED4' }}
+          >
+            <LockIcon style={{ color: '#626ED4' }} />
+            <Typography sx={loginForgetPasswordStyle}>
               Forgot Password ?
             </Typography>
-          </Link>
+          </Stack>
         </Stack>
       </Box>
     </Stack>
